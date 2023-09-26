@@ -83,6 +83,8 @@ public class CalculationQuestionGenerator : MonoBehaviour
         _rightNumbers.Add(rightNumber);
         _symbols.Add(symbol);
         _answers.Add(answer);
+
+        Debug.Log($"{leftNumber} {symbol} {rightNumber} = {answer}");
     }
 
     /// <summary>
