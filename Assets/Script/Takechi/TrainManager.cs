@@ -8,7 +8,7 @@ internal class TrainManager : MonoBehaviour, IManager
     [SerializeField] float _decreaseSpeed = 2;
     [SerializeField] float _initialSpeed = 10;
     internal float _currentSpeed { get; private set; } = 0;
-    internal static float _movingDistance { get; private set; } = 0;
+    public static float _movingDistance { get; private set; } = 0;
     float _elapsedTime = 0;
 
     void Start()
