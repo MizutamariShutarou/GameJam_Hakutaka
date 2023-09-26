@@ -10,6 +10,8 @@ public class PlayerTest : MonoBehaviour
 {
     [SerializeField] private InputField _inputField = default;
     [SerializeField] private CalculationQuestionGenerator _questionGenerator = default;
+    [SerializeField] private CalculationUI _calculationUI = default;
+    [SerializeField] private TrainManager _trainManager = default;
 
     private void Start()
     {
@@ -34,14 +36,17 @@ public class PlayerTest : MonoBehaviour
         if(playerAnswer == _questionGenerator.NowAnswer)
         {
             Debug.Log("³‰ğI");
+            _trainManager.Correct();
         }
         else
         {
             Debug.Log("•s³‰ğc");
+            _trainManager.Incorrect();
         }
 
         //“š‚¦‚½‚æ‚Á‚Ä‚µ‚Ä‚é
         _questionGenerator.Answer();
+        _calculationUI.SettingUI(_questionGenerator.CurrentNum - 1);
     }
 
 }
