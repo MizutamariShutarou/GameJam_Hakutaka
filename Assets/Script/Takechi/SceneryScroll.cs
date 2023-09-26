@@ -22,7 +22,7 @@ public class SceneryScroll : MonoBehaviour
     }
     void Update()
     {
-        float movingDistance = _trainManager._currentSpeed * Time.deltaTime;
+        float movingDistance = _trainManager._currentSpeed * Time.deltaTime * 10;
         _scrollObject1.transform.position += new Vector3(0, 0, -movingDistance);
         _scrollObject2.transform.position += new Vector3(0, 0, -movingDistance);
         if(_scrollObject1.transform.position.z < _backAnchor.z) 
