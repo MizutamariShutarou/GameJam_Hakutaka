@@ -15,6 +15,6 @@ public class MovingDistanceText : MonoBehaviour
 
     void Update()
     {
-        _text.text = $"距離：{_trainManager._movingDistance.ToString("0.000")}km\n速度：{_trainManager._currentSpeed}km/h";
+        _text.text = $"距離：{TrainManager._movingDistance.ToString("0.000")}km\n速度：{_trainManager._currentSpeed}km/h";
     }
 }
