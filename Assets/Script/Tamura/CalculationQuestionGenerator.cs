@@ -19,6 +19,7 @@ public class CalculationQuestionGenerator : MonoBehaviour
     private List<string> _symbols = new List<string>();
     private List<int> _answers = new List<int>();
     private int _answerCount = 0;
+    private int _currentNum = 0;
 
     /// <summary>Å‰‚É¶¬‚³‚ê‚é–â‘è‚Ì”</summary>
     public int FirstGenerateNumber => _firstGenerateNumber;
@@ -30,12 +31,13 @@ public class CalculationQuestionGenerator : MonoBehaviour
     public List<string> Symbols => _symbols;
     /// <summary>”®‚Ì“š‚¦‚½‚¿</summary>
     public List<int> Answers => _answers;
+    /// <summary>Œ»İ‚Ì–â‘è”</summary>
+    public int CurrentNum => _currentNum;
     /// <summary>¡‚Ì–â‘è‚Ì“š‚¦</summary>
     public int NowAnswer => _answers[_answerCount];
 
-    void Start()
+    void Awake()
     {
-
         //‚ ‚ç‚©‚¶‚ß‚¢‚­‚Â‚©–â‘è‚ğì‚Á‚Ä‚¨‚­
         for (int i = 0; i < _firstGenerateNumber; i++)
         {
@@ -50,6 +52,8 @@ public class CalculationQuestionGenerator : MonoBehaviour
     /// </summary>
     private void QuestionGenerate()
     {
+        _currentNum++;
+        Debug.Log(_currentNum);
         //2‚Â‚Ì”’l‚ğƒ‰ƒ“ƒ_ƒ€‚ÉŒˆ‚ß‚é
         int leftNumber = Random.Range(_minValue, _maxValue);
         int rightNumber = Random.Range(_minValue, _maxValue);
