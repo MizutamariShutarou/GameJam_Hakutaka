@@ -16,6 +16,12 @@ public class PlayerTest : MonoBehaviour
         _inputField.Select();
     }
 
+    private void Update()
+    {
+        //if (_inputField.isFocused) return;
+        //_inputField.Select();
+    }
+
     public void OnEndEdit()
     {
         //‰½‚à“ü—Í‚³‚ê‚Ä‚È‚©‚Á‚½‚ç‰½‚à‚µ‚È‚¢
