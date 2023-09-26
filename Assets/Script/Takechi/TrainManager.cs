@@ -21,17 +21,17 @@ internal class TrainManager : MonoBehaviour, IManager
         _movingDistance += _currentSpeed * Time.deltaTime / 60;
         _elapsedTime += Time.deltaTime;
     }
-    internal void Initialize()
+    public void Initialize()
     {
         _currentSpeed = _initialSpeed;
     }
 
-    internal void Correct()
+    public void Correct()
     {
         _currentSpeed += _increaseSpeed;
     }
 
-    internal void Incorrect()
+    public void Incorrect()
     {
         _currentSpeed -= _decreaseSpeed;
         if( _currentSpeed <= 0 )
