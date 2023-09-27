@@ -14,20 +14,23 @@ public class SpawnStation : MonoBehaviour
     [SerializeField, Header("スクロールするスピードにかかる係数")] private float _speedCoe = 30f;
     private GameObject _spawnedStation = null;
     [SerializeField] private float _spawnDistance = 100;
+    [SerializeField, Header("駅が出てくる場所")] private float[] _stationPoint = new float[4];
+    private int _stationCount = 0;
 
     void Start()
     {
-        
+        _spawnDistance = _stationPoint[0];
     }
 
     void Update()
     {
         
-        //一旦50km毎にスポーンさせる
+        //設定した駅の間隔ごとに出現する
         if(TrainManager._movingDistance > _spawnDistance)
         {
             _spawnedStation = Instantiate(_station, _spawnPoint);
-            _spawnDistance += 50;
+            if(_stationCount < _stationPoint.Length) _stationCount++;
+            _spawnDistance = _stationPoint[_stationCount];
         }
 
         if (!_spawnedStation) return;
