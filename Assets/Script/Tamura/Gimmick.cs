@@ -20,6 +20,12 @@ public class Gimmick : MonoBehaviour
     [SerializeField, Header("’Ê‚è‚©‚©‚é‚È‚É‚©")] private GameObject _throughGameObject = default;
     [SerializeField] private float _moveSecond = 5;
 
+    //--ˆÃ‚­‚È‚éƒMƒ~ƒbƒNŠÖŒW--//
+    [Header("ˆÃ‚­‚È‚éƒMƒ~ƒbƒNŠÖŒW")]
+    [SerializeField, Header("‚±‚Ì¢ŠE‚ÌŒõ")] private Light _light = default;
+    [SerializeField, Header("¬‚³‚¢‚Ù‚ÇˆÃ‚¢"), Range(0, 50)] private float _lightRotate = 10;
+    [SerializeField, Header("‚Ç‚Ì‚­‚ç‚¢‚©‚¯‚ÄˆÃ‚­‚È‚é‚©")] private float _toDarkSecond = 3;
+
     [Header("ŽžŠÔŠÖŒW")]
     private Action[] _gimmicks = new Action[2];
     [SerializeField, Header("ƒCƒxƒ“ƒg‚ÌƒN[ƒ‹ƒ^ƒCƒ€")] private float _coolTime = 25f;
@@ -73,6 +79,15 @@ public class Gimmick : MonoBehaviour
     {
         var go = Instantiate(_throughGameObject, new Vector3(-700, 0, 36), Quaternion.identity);
         go.transform.DOMoveX(700, _moveSecond).SetEase(Ease.Linear).OnComplete(() => Destroy(go)).SetAutoKill();
+    }
+
+    /// <summary>
+    /// ˆÃ‚­‚È‚é
+    /// </summary>
+    public void ToDark()
+    {
+        _light.transform.DORotate(new Vector3(_lightRotate, -30, 0), _toDarkSecond)
+            .SetEase(Ease.Linear).SetAutoKill();
     }
 
 }
