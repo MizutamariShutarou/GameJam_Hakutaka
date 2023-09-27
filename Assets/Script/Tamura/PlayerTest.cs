@@ -24,7 +24,7 @@ public class PlayerTest : MonoBehaviour
         //_inputField.Select();
     }
 
-    public void OnEndEdit()
+    public async void OnEndEdit()
     {
         //‰½‚à“ü—Í‚³‚ê‚Ä‚È‚©‚Á‚½‚ç‰½‚à‚µ‚È‚¢
         if (_inputField.text == "") return;
@@ -46,7 +46,7 @@ public class PlayerTest : MonoBehaviour
 
         //“š‚¦‚½‚æ‚Á‚Ä‚µ‚Ä‚é
         _questionGenerator.Answer();
-        _calculationUI.SettingUI(_questionGenerator.CurrentNum - 1);
+        await _calculationUI.UpdateUI(_questionGenerator.CurrentNum - 1);
     }
 
 }
