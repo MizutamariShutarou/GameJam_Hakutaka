@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class MovingDistanceText : MonoBehaviour
 {
+    [SerializeField] TextType _textType;
     TrainManager _trainManager;
     Text _text;
     void Start()
@@ -15,6 +16,14 @@ public class MovingDistanceText : MonoBehaviour
 
     void Update()
     {
-        _text.text = $"ãóó£ÅF{TrainManager._movingDistance.ToString("0.000")}km\në¨ìxÅF{_trainManager._currentSpeed}km/h";
+        if(_textType == TextType.MovingDistance)
+            _text.text = TrainManager._movingDistance.ToString("0.000") + "km";
+        if (_textType == TextType.Speed)
+            _text.text = _trainManager._currentSpeed.ToString() + "km/h";
+    }
+    enum TextType
+    {
+        MovingDistance,
+        Speed,
     }
 }

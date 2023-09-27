@@ -18,9 +18,9 @@ public class ResultText : MonoBehaviour
     void Update()
     {
         if(_textType == TextType.MovingDistance)
-            _text.text = $"進んだ距離：{TrainManager._movingDistance}km";
+            _text.text = TrainManager._movingDistance.ToString() + "km";
         if (_textType == TextType.TransitStaion)
-            _text.text = $"終着駅：{_resultManager._transitStaion}";
+            _text.text = _resultManager._transitStaion;
     }
     enum TextType
     {
