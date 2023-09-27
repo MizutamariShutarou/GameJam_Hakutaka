@@ -50,4 +50,4 @@ MonoBehaviour:
   _fadeSpeed: 0.2
   _fadeEase: 1
   _fadeOutMoveEndPos: -2000
-  _nextUISize: 0.5
+  _nextUISize: 0.7
