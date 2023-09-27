@@ -1570,8 +1570,8 @@ RectTransform:
   - {fileID: 382815259}
   - {fileID: 1340274998}
   - {fileID: 107339207}
-  - {fileID: 1120105504}
   - {fileID: 2015270566}
+  - {fileID: 1120105504}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
