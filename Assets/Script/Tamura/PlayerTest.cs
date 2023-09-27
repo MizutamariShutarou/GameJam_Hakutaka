@@ -12,6 +12,7 @@ public class PlayerTest : MonoBehaviour
     [SerializeField] private CalculationQuestionGenerator _questionGenerator = default;
     [SerializeField] private CalculationUI _calculationUI = default;
     [SerializeField] private TrainManager _trainManager = default;
+    [SerializeField] private int _answerCount = 0;
 
     private void Start()
     {
@@ -29,6 +30,7 @@ public class PlayerTest : MonoBehaviour
         //‰½‚à“ü—Í‚³‚ê‚Ä‚È‚©‚Á‚½‚ç‰½‚à‚µ‚È‚¢
         if (_inputField.text == "") return;
 
+        _answerCount++;
         int playerAnswer = int.Parse(_inputField.text);
         _inputField.text = "";
 
@@ -45,7 +47,8 @@ public class PlayerTest : MonoBehaviour
         }
 
         //“š‚¦‚½‚æ‚Á‚Ä‚µ‚Ä‚é
-        _questionGenerator.Answer();
+        _questionGenerator.Answer(_answerCount);
+        _trainManager.ChangeSpeedRate(_answerCount);
         await _calculationUI.UpdateUI(_questionGenerator.CurrentNum - 1);
     }
 
