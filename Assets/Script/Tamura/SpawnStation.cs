@@ -15,6 +15,7 @@ public class SpawnStation : MonoBehaviour
     [SerializeField] private GameObject _spawnedStation = null;
     [SerializeField] private float _spawnDistance = 100;
     [SerializeField, Header("‰w‚ªo‚Ä‚­‚éêŠ")] private float[] _stationPoint = new float[4];
+    private bool _isThrowAllStation = false;
     private int _stationCount = 0;
 
     void Start()
@@ -24,13 +25,24 @@ public class SpawnStation : MonoBehaviour
 
     void Update()
     {
-        
+        //‘S‚Ä‚Ì‰w‚ð’Ê‚è‰ß‚¬‚Ä‚½‚ç‚È‚É‚à‚µ‚È‚¢
+        if (_isThrowAllStation) return;
+
         //Ý’è‚µ‚½‰w‚ÌŠÔŠu‚²‚Æ‚ÉoŒ»‚·‚é
         if(TrainManager._movingDistance > _spawnDistance)
         {
             _spawnedStation = Instantiate(_station, _spawnPoint);
-            if(_stationCount < _stationPoint.Length) _stationCount++;
-            _spawnDistance = _stationPoint[_stationCount];
+
+            if (_stationCount < _stationPoint.Length)
+            {
+                _stationCount++;
+                _spawnDistance = _stationPoint[_stationCount];
+            }
+            else
+            {
+                _isThrowAllStation = true;
+            }
+
         }
 
         if (!_spawnedStation) return;
