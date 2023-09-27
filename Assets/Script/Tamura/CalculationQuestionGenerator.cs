@@ -10,7 +10,7 @@ public class CalculationQuestionGenerator : MonoBehaviour
     [SerializeField, Header("全ての答えが'0'になります")] private bool _isCheating = false;
 
     [SerializeField, Header("難易度調整")] private LevelParameter[] _levelParameter = new LevelParameter[0];
-    private int _nowLevel = 0;
+    [SerializeField] private int _nowLevel = 0;
     private int _minValue = 0;
     private int _maxValue = 10;
     private bool _isAppearMultiplication = false;
@@ -43,14 +43,15 @@ public class CalculationQuestionGenerator : MonoBehaviour
     {
 
         //チートモードです
-        if(_isCheating)
-        {
-            _levelParameter[0].NextBorder = int.MaxValue;
-            _levelParameter[0].MinValue = 0;
-            _levelParameter[0].MaxValue = 0;
-            _levelParameter[0].IsAppearMultiplication = false;
-            _maxValue = 0;
-        }
+        //if (_isCheating)
+        //{
+        //    Debug.Log("チートモードが有効です");
+        //    _levelParameter[0].NextBorder = int.MaxValue;
+        //    _levelParameter[0].MinValue = 0;
+        //    _levelParameter[0].MaxValue = 0;
+        //    _levelParameter[0].IsAppearMultiplication = false;
+        //    _maxValue = 0;
+        //}
 
         //あらかじめいくつか問題を作っておく
         for (int i = 0; i < _firstGenerateNumber; i++)
@@ -59,6 +60,10 @@ public class CalculationQuestionGenerator : MonoBehaviour
         }
 
         _nowAnswer = _answers[0];
+    }
+
+    private void Start()
+    {
         LevelUp();
     }
 
@@ -126,7 +131,7 @@ public class CalculationQuestionGenerator : MonoBehaviour
         QuestionGenerate();
         _nowAnswer = _answers[answerCount];
 
-        if(_nowLevel < _levelParameter.Length && answerCount >= _levelParameter[_nowLevel].NextBorder)
+        if(_nowLevel < _levelParameter.Length && answerCount == _levelParameter[_nowLevel].NextBorder)
         {
             LevelUp();
         }
@@ -154,8 +159,8 @@ class LevelParameter
     [Header("出てくる数値の最大値"), SerializeField ,Range(0, 10)] int maxValue;
     [Header("掛け算がでるかどうか"), SerializeField] bool isAppearMultiplication;
 
-    public int NextBorder { get; set; }
-    public int MinValue { get; set; }
-    public int MaxValue { get; set; }
-    public bool IsAppearMultiplication { get; set; }
+    public int NextBorder => nextBorder;
+    public int MinValue => minValue;
+    public int MaxValue => maxValue;
+    public bool IsAppearMultiplication => isAppearMultiplication;
 }
