@@ -13,7 +13,7 @@ internal class TrainManager : MonoBehaviour, IManager
 
     void Start()
     {
-        _currentSpeed = _initialSpeed;
+        Initialize();
     }
 
     void Update()
