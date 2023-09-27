@@ -24,26 +24,47 @@ public class CalculationUI : MonoBehaviour
     private Ease _fadeEase = Ease.Linear;
 
     [SerializeField]
-    private float _endPos = 0f;
+    private float _fadeOutMoveEndPos = 0f;
+
+    [SerializeField]
+    private float _nextUISize = 0f;
+
+    [SerializeField]
+    private float _nextUIAlfa = 0f;
+
 
     private List<OperationObj> _operationObjList = new List<OperationObj>();
 
-    // private CancellationToken _ct = new CancellationToken();
-
     void Start()
     {
-        // _ct = this.GetCancellationTokenOnDestroy();
         for (int i = 0; i < _generator.FirstGenerateNumber; i++)
         {
             SettingUI(i);
         }
     }
 
+    private void Update()
+    {
+        SettingNextUI();
+    }
+
     private void SettingUI(int num)
     {
         var obj = GameObject.Instantiate(_operationObj, _canvas.transform);
         _operationObjList.Add(obj);
-        obj.Initialize(_generator, num);
+        obj.Initialize(_generator, num); 
+    }
+
+    public void SettingNextUI()
+    {
+        var firstObj = _operationObjList[0].gameObject;
+        firstObj.transform.localScale = new Vector3(_nextUISize * 2, _nextUISize * 2, _nextUISize * 2);
+
+        var secondObj = _operationObjList[1].gameObject;
+        secondObj.transform.localScale = new Vector3(_nextUISize, _nextUISize, _nextUISize);
+
+        var thirdObj = _operationObjList[2].gameObject;
+        thirdObj.transform.localScale = new Vector3(_nextUISize, _nextUISize, _nextUISize);
     }
 
     public async UniTask UIAnimation(List<OperationObj> objList)
@@ -54,7 +75,7 @@ public class CalculationUI : MonoBehaviour
 
         seq
             .Join(image.DOFade(0f, _fadeSpeed).SetEase(_fadeEase))
-            .Join(objList[0].transform.DOLocalMoveX(_endPos, _fadeSpeed).SetEase(_fadeEase))
+            .Join(objList[0].transform.DOLocalMoveX(_fadeOutMoveEndPos, _fadeSpeed).SetEase(_fadeEase))
             .OnComplete(() =>
             {
                 DestroyUIObj();
