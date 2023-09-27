@@ -29,10 +29,6 @@ public class CalculationUI : MonoBehaviour
     [SerializeField]
     private float _nextUISize = 0f;
 
-    [SerializeField]
-    private float _nextUIAlfa = 0f;
-
-
     private List<OperationObj> _operationObjList = new List<OperationObj>();
 
     void Start()
@@ -59,6 +55,7 @@ public class CalculationUI : MonoBehaviour
     {
         var firstObj = _operationObjList[0].gameObject;
         firstObj.transform.localScale = new Vector3(_nextUISize * 2, _nextUISize * 2, _nextUISize * 2);
+       
 
         var secondObj = _operationObjList[1].gameObject;
         secondObj.transform.localScale = new Vector3(_nextUISize, _nextUISize, _nextUISize);

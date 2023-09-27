@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3983778765276174519
 MonoBehaviour:
@@ -47,3 +47,7 @@ MonoBehaviour:
   _canvas: {fileID: 0}
   _generator: {fileID: 0}
   _operationObj: {fileID: 8633637748282327649, guid: 1b5812543975f464b88a71e2336b77e7, type: 3}
+  _fadeSpeed: 0.2
+  _fadeEase: 1
+  _fadeOutMoveEndPos: -2000
+  _nextUISize: 0.5
