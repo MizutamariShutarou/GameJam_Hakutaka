@@ -24,6 +24,7 @@ internal class TrainManager : MonoBehaviour, IManager
     public void Initialize()
     {
         _currentSpeed = _initialSpeed;
+        _movingDistance = 0;
     }
 
     public void Correct()
