@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 [RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
 {
@@ -21,6 +23,36 @@ public class AudioManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += SceneLoaded;
+    }
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= SceneLoaded;
+    }
+    void SceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if(scene.name == "Title")
+        {
+            StopBGM();
+            PlayBGM(0);
+            StopLoop();
+        }
+        if (scene.name == "InGame")
+        {
+            StopBGM();
+            PlayBGM(1);
+            PlayLoop(0);
+            PlaySE(0);
+        }
+        if (scene.name == "Result")
+        {
+            StopBGM();
+            StopLoop();
+            PlaySE(0);
         }
     }
     public void PlaySE(int index)

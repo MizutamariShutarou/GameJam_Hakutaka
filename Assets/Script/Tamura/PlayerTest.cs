@@ -38,11 +38,13 @@ public class PlayerTest : MonoBehaviour
         if(playerAnswer == _questionGenerator.NowAnswer)
         {
             Debug.Log("³‰ğI");
+            AudioManager.Instance.PlaySE(1);
             _trainManager.Correct();
         }
         else
         {
             Debug.Log("•s³‰ğc");
+            AudioManager.Instance.PlaySE(2);
             _trainManager.Incorrect();
         }
 
