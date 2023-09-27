@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class CalculationQuestionGenerator : MonoBehaviour
 {
+    [SerializeField, Header("全ての答えが'0'になります")] private bool _isCheating = false;
+
     [SerializeField, Header("難易度調整")] private LevelParameter[] _levelParameter = new LevelParameter[0];
     private int _nowLevel = 0;
     private int _minValue = 0;
@@ -39,6 +41,17 @@ public class CalculationQuestionGenerator : MonoBehaviour
 
     void Awake()
     {
+
+        //チートモードです
+        if(_isCheating)
+        {
+            _levelParameter[0].NextBorder = int.MaxValue;
+            _levelParameter[0].MinValue = 0;
+            _levelParameter[0].MaxValue = 0;
+            _levelParameter[0].IsAppearMultiplication = false;
+            _maxValue = 0;
+        }
+
         //あらかじめいくつか問題を作っておく
         for (int i = 0; i < _firstGenerateNumber; i++)
         {
@@ -141,8 +154,8 @@ class LevelParameter
     [Header("出てくる数値の最大値"), SerializeField ,Range(0, 10)] int maxValue;
     [Header("掛け算がでるかどうか"), SerializeField] bool isAppearMultiplication;
 
-    public int NextBorder => nextBorder;
-    public int MinValue => minValue;
-    public int MaxValue => maxValue;
-    public bool IsAppearMultiplication => isAppearMultiplication;
+    public int NextBorder { get; set; }
+    public int MinValue { get; set; }
+    public int MaxValue { get; set; }
+    public bool IsAppearMultiplication { get; set; }
 }
