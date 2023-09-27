@@ -11,6 +11,15 @@ internal class TrainManager : MonoBehaviour, IManager
     public static float _movingDistance { get; private set; } = 0;
     float _elapsedTime = 0;
 
+    [Header("スピードの変化量について")]
+    [SerializeField, Header("指数関数を使うかどうか")] private bool _isUseS = true;
+
+    //--指数関数バージョン--//
+    [SerializeField, Header("指数関数のnの部分")] private float _coeS = 2;
+
+    //--一次関数バージョン--//
+    [SerializeField, Header("一次関数のnの部分")] private float _coeI = 5;
+
     void Start()
     {
         Initialize();
@@ -40,4 +49,23 @@ internal class TrainManager : MonoBehaviour, IManager
             _currentSpeed = 0;
         }
     }
+
+    public void ChangeSpeedRate(int answerCount)
+    {
+
+        //指数関数使います
+        if (_isUseS)
+        {
+            _increaseSpeed = Mathf.Pow(_coeS, answerCount);
+            _decreaseSpeed = Mathf.Pow(_coeS, answerCount);
+        }
+        //一次関数使います
+        else
+        {
+            _increaseSpeed = _coeI * answerCount;
+            _decreaseSpeed = _coeI * answerCount;
+        }
+
+    }
+
 }

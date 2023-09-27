@@ -18,7 +18,8 @@ public class CalculationQuestionGenerator : MonoBehaviour
     private List<int> _rightNumbers = new List<int>();
     private List<string> _symbols = new List<string>();
     private List<int> _answers = new List<int>();
-    private int _answerCount = 0;
+    //private int _answerCount = 0;
+    private int _nowAnswer = 0;
     private int _currentNum = 0;
 
     /// <summary>最初に生成される問題の数</summary>
@@ -34,7 +35,7 @@ public class CalculationQuestionGenerator : MonoBehaviour
     /// <summary>現在の問題数</summary>
     public int CurrentNum => _currentNum;
     /// <summary>今の問題の答え</summary>
-    public int NowAnswer => _answers[_answerCount];
+    public int NowAnswer => _nowAnswer;
 
     void Awake()
     {
@@ -44,6 +45,7 @@ public class CalculationQuestionGenerator : MonoBehaviour
             QuestionGenerate();
         }
 
+        _nowAnswer = _answers[0];
         LevelUp();
     }
 
@@ -105,13 +107,13 @@ public class CalculationQuestionGenerator : MonoBehaviour
     /// プレイヤーが答えたときに行う処理
     /// 新しく問題を追加する
     /// </summary>
-    public void Answer()
+    public void Answer(int answerCount)
     {
         Debug.Log("問題に答えたよ");
         QuestionGenerate();
-        _answerCount++;
+        _nowAnswer = _answers[answerCount];
 
-        if(_nowLevel < _levelParameter.Length && _answerCount >= _levelParameter[_nowLevel].NextBorder)
+        if(_nowLevel < _levelParameter.Length && answerCount >= _levelParameter[_nowLevel].NextBorder)
         {
             LevelUp();
         }
