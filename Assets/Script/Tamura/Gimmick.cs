@@ -77,8 +77,8 @@ public class Gimmick : MonoBehaviour
     /// </summary>
     public void PassThrough()
     {
-        var go = Instantiate(_throughGameObject, new Vector3(-700, 0, 36), Quaternion.identity);
-        go.transform.DOMoveX(700, _moveSecond).SetEase(Ease.Linear).OnComplete(() => Destroy(go)).SetAutoKill();
+        var go = Instantiate(_throughGameObject, new Vector3(0, 30, -700), Quaternion.identity);
+        go.transform.DOMoveZ(700, _moveSecond).SetEase(Ease.Linear).OnComplete(() => Destroy(go)).SetAutoKill();
     }
 
     /// <summary>
