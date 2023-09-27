@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -17,6 +18,8 @@ public class CalculationUI : MonoBehaviour
     [SerializeField]
     private OperationObj _operationObj = default;
 
+    [Header("計算式UI関連のパラ")]
+
     [SerializeField]
     private float _fadeSpeed = 0f;
 
@@ -29,10 +32,32 @@ public class CalculationUI : MonoBehaviour
     [SerializeField]
     private float _nextUISize = 0f;
 
+    [Header("正解不正解UI関連のパラ")]
+
+    [SerializeField]
+    private Image _upImage = default;
+
+    [SerializeField]
+    private Image _downImage = default;
+
+    [SerializeField]
+    private float _delayTime = default;
+
+    //[SerializeField]
+    //private float _imageFadeSpeed = 0f;
+
+    //[SerializeField]
+    //private Ease _imageFadeEase = Ease.Linear;
+
+    private CancellationToken _ct = new CancellationToken();
+
     private List<OperationObj> _operationObjList = new List<OperationObj>();
 
     void Start()
     {
+        _ct = this.GetCancellationTokenOnDestroy();
+        _upImage.gameObject.SetActive(false);
+        _downImage.gameObject.SetActive(false);
         for (int i = 0; i < _generator.FirstGenerateNumber; i++)
         {
             SettingUI(i);
@@ -92,6 +117,32 @@ public class CalculationUI : MonoBehaviour
         SettingUI(currentNum);
 
         await UIAnimation(_operationObjList);
+    }
+
+    public async void ActiveCorrectImage()
+    {
+        _upImage.gameObject.SetActive(true);
+        await UniTask.Delay(TimeSpan.FromSeconds(_delayTime), cancellationToken: _ct);
+        _upImage.gameObject.SetActive(false);
+        //var seq = DOTween.Sequence();
+
+        //seq
+        //    .Join(_upImage.DOFade(1f, _imageFadeSpeed).SetEase(_imageFadeEase))
+        //    .SetDelay(_delayTime)
+        //    .Append(_upImage.DOFade(0f, _imageFadeSpeed).SetEase(_imageFadeEase));
+    }
+
+    public async void ActiveIncorrectImage()
+    {
+        _downImage.gameObject.SetActive(true);
+        await UniTask.Delay(TimeSpan.FromSeconds(_delayTime), cancellationToken: _ct);
+        _downImage.gameObject.SetActive(false);
+        //var seq = DOTween.Sequence();
+
+        //seq
+        //    .Join(_downImage.DOFade(1f, _imageFadeSpeed).SetEase(_imageFadeEase))
+        //    .SetDelay(_delayTime)
+        //    .Append(_downImage.DOFade(0f, _imageFadeSpeed).SetEase(_imageFadeEase));
     }
 
 }
