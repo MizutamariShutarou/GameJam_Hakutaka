@@ -77,6 +77,7 @@ public class Gimmick : MonoBehaviour
     /// </summary>
     public void PassThrough()
     {
+        AudioManager.Instance.PlaySE(3);
         var go = Instantiate(_throughGameObject, new Vector3(0, 30, -700), Quaternion.identity);
         go.transform.DOMoveZ(700, _moveSecond).SetEase(Ease.Linear).OnComplete(() => Destroy(go)).SetAutoKill();
     }
