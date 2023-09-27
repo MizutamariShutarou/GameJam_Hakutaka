@@ -79,7 +79,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enter text...
+  m_Text: 
 --- !u!1 &5665162164056014162
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +113,7 @@ RectTransform:
   m_Children:
   - {fileID: 2778371555813536037}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -250,7 +250,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: a59b5c22a1f7ce14482ab8622fffdb6b, type: 3}
     m_FontSize: 50
     m_FontStyle: 1
     m_BestFit: 0
@@ -274,6 +274,7 @@ GameObject:
   - component: {fileID: 2778371555813536037}
   - component: {fileID: 4878600014220003876}
   - component: {fileID: 2621805054485531182}
+  - component: {fileID: 6187914386294866228}
   - component: {fileID: 7805551278486995035}
   m_Layer: 5
   m_Name: InputField (Legacy)
@@ -342,6 +343,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6187914386294866228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8786690074179609673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65efb27ac64b8a3448aa2ba31dee1b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7805551278486995035
 MonoBehaviour:
   m_ObjectHideFlags: 0

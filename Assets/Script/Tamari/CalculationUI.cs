@@ -54,7 +54,7 @@ public class CalculationUI : MonoBehaviour
     public void SettingNextUI()
     {
         var firstObj = _operationObjList[0].gameObject;
-        firstObj.transform.localScale = new Vector3(_nextUISize * 2, _nextUISize * 2, _nextUISize * 2);
+        firstObj.transform.localScale = new Vector3(1, 1, 1);
        
 
         var secondObj = _operationObjList[1].gameObject;
