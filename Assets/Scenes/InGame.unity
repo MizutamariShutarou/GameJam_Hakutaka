@@ -1175,14 +1175,14 @@ MonoBehaviour:
   _cameras:
   - {fileID: 131884089}
   - {fileID: 1101374717}
-  _throughGameObject: {fileID: 5229758708965907410, guid: fc970204a925bc348801869330b5a60e, type: 3}
-  _moveSecond: 10
+  _throughGameObject: {fileID: 4854034131688512831, guid: fc970204a925bc348801869330b5a60e, type: 3}
+  _moveSecond: 8
   _light: {fileID: 1813159274}
   _lightRotate: 10
   _toDarkSecond: 3
-  _coolTime: 2
+  _coolTime: 10
   _minValue: 2
-  _maxValue: 2
+  _maxValue: 5
   _timer: 0
 --- !u!1001 &1998383362
 PrefabInstance:
