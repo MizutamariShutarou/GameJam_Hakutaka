@@ -266,14 +266,16 @@ MonoBehaviour:
     value: "\u5927\u962A"
   - key: 750
     value: "\u9E7F\u5150\u5CF6"
-  - key: 1250
+  - key: 1000
     value: "\u4E2D\u56FD"
-  - key: 1500
+  - key: 1250
     value: "\u53F0\u6E7E"
-  - key: 1850
+  - key: 1500
     value: "\u30D5\u30A3\u30EA\u30D4\u30F3"
-  - key: 2500
+  - key: 2000
     value: "\u30A4\u30F3\u30C9\u30CD\u30B7\u30A2"
+  - key: 3000
+    value: "\u30AA\u30FC\u30B9\u30C8\u30E9\u30EA\u30A2"
 --- !u!1 &382815258
 GameObject:
   m_ObjectHideFlags: 0
