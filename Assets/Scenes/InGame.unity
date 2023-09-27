@@ -777,15 +777,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6280653560370450375, guid: ec80db91bfc2f2e44b016e34da3be1f8, type: 3}
       propertyPath: _levelParameter.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6280653560370450375, guid: ec80db91bfc2f2e44b016e34da3be1f8, type: 3}
+      propertyPath: _levelParameter.Array.data[1].maxValue
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6280653560370450375, guid: ec80db91bfc2f2e44b016e34da3be1f8, type: 3}
       propertyPath: _levelParameter.Array.data[1].minValue
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6280653560370450375, guid: ec80db91bfc2f2e44b016e34da3be1f8, type: 3}
       propertyPath: _levelParameter.Array.data[2].maxValue
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6280653560370450375, guid: ec80db91bfc2f2e44b016e34da3be1f8, type: 3}
       propertyPath: _levelParameter.Array.data[2].minValue
@@ -793,19 +797,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280653560370450375, guid: ec80db91bfc2f2e44b016e34da3be1f8, type: 3}
       propertyPath: _levelParameter.Array.data[3].maxValue
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6280653560370450375, guid: ec80db91bfc2f2e44b016e34da3be1f8, type: 3}
       propertyPath: _levelParameter.Array.data[3].minValue
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6280653560370450375, guid: ec80db91bfc2f2e44b016e34da3be1f8, type: 3}
       propertyPath: _levelParameter.Array.data[4].maxValue
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6280653560370450375, guid: ec80db91bfc2f2e44b016e34da3be1f8, type: 3}
       propertyPath: _levelParameter.Array.data[4].minValue
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6280653560370450375, guid: ec80db91bfc2f2e44b016e34da3be1f8, type: 3}
       propertyPath: _levelParameter.Array.data[5].maxValue
@@ -825,27 +829,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280653560370450375, guid: ec80db91bfc2f2e44b016e34da3be1f8, type: 3}
       propertyPath: _levelParameter.Array.data[1].nextBorder
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6280653560370450375, guid: ec80db91bfc2f2e44b016e34da3be1f8, type: 3}
       propertyPath: _levelParameter.Array.data[2].nextBorder
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 6280653560370450375, guid: ec80db91bfc2f2e44b016e34da3be1f8, type: 3}
-      propertyPath: _levelParameter.Array.data[3].nextBorder
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6280653560370450375, guid: ec80db91bfc2f2e44b016e34da3be1f8, type: 3}
+      propertyPath: _levelParameter.Array.data[3].nextBorder
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6280653560370450375, guid: ec80db91bfc2f2e44b016e34da3be1f8, type: 3}
       propertyPath: _levelParameter.Array.data[4].nextBorder
-      value: 28
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 6280653560370450375, guid: ec80db91bfc2f2e44b016e34da3be1f8, type: 3}
       propertyPath: _levelParameter.Array.data[5].nextBorder
-      value: 35
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6280653560370450375, guid: ec80db91bfc2f2e44b016e34da3be1f8, type: 3}
       propertyPath: _levelParameter.Array.data[6].nextBorder
-      value: 40
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6280653560370450375, guid: ec80db91bfc2f2e44b016e34da3be1f8, type: 3}
       propertyPath: _levelParameter.Array.data[1].isAppearMultiplication
@@ -861,11 +865,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280653560370450375, guid: ec80db91bfc2f2e44b016e34da3be1f8, type: 3}
       propertyPath: _levelParameter.Array.data[4].isAppearMultiplication
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6280653560370450375, guid: ec80db91bfc2f2e44b016e34da3be1f8, type: 3}
       propertyPath: _levelParameter.Array.data[5].isAppearMultiplication
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6280653560370450375, guid: ec80db91bfc2f2e44b016e34da3be1f8, type: 3}
       propertyPath: _levelParameter.Array.data[6].isAppearMultiplication
@@ -1474,10 +1478,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _increaseSpeed: 70
   _decreaseSpeed: 15
-  _initialSpeed: 10
+  _initialSpeed: 160
   _isUseS: 0
   _coeS: 2
-  _coeI: 5
+  _coeI: 3.8
 --- !u!114 &1861121496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1526,9 +1530,9 @@ MonoBehaviour:
   _light: {fileID: 1813159274}
   _lightRotate: 10
   _toDarkSecond: 3
-  _coolTime: 10
-  _minValue: 2
-  _maxValue: 5
+  _coolTime: 30
+  _minValue: 5
+  _maxValue: 10
   _timer: 0
 --- !u!114 &1861121499
 MonoBehaviour:
@@ -1706,10 +1710,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7805551278486995035, guid: 17349e2d04be8764eba64d6ceeb2d2a1, type: 3}
+      propertyPath: m_CharacterLimit
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7805551278486995035, guid: 17349e2d04be8764eba64d6ceeb2d2a1, type: 3}
       propertyPath: m_OnDidEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1501544602}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6187914386294866228, guid: 17349e2d04be8764eba64d6ceeb2d2a1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7268230726464670001, guid: 17349e2d04be8764eba64d6ceeb2d2a1, type: 3}
