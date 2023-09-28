@@ -12,9 +12,10 @@ public class SpawnStation : MonoBehaviour
     [SerializeField] private Transform _spawnPoint = default;
     [SerializeField, Header("‰w‚ÌƒIƒuƒWƒFƒNƒg‚ªÁ‚¦‚éêŠ")] private float _destroyStationZ = -600;
     [SerializeField, Header("ƒXƒNƒ[ƒ‹‚·‚éƒXƒs[ƒh‚É‚©‚©‚éŒW”")] private float _speedCoe = 30f;
-    private GameObject _spawnedStation = null;
+    [SerializeField] private GameObject _spawnedStation = null;
     [SerializeField] private float _spawnDistance = 100;
     [SerializeField, Header("‰w‚ªo‚Ä‚­‚éêŠ")] private float[] _stationPoint = new float[4];
+    private bool _isThrowAllStation = false;
     private int _stationCount = 0;
 
     void Start()
@@ -24,19 +25,30 @@ public class SpawnStation : MonoBehaviour
 
     void Update()
     {
-        
+        //‘S‚Ä‚Ì‰w‚ð’Ê‚è‰ß‚¬‚Ä‚½‚ç‚È‚É‚à‚µ‚È‚¢
+        if (_isThrowAllStation) return;
+
         //Ý’è‚µ‚½‰w‚ÌŠÔŠu‚²‚Æ‚ÉoŒ»‚·‚é
         if(TrainManager._movingDistance > _spawnDistance)
         {
             _spawnedStation = Instantiate(_station, _spawnPoint);
-            if(_stationCount < _stationPoint.Length) _stationCount++;
-            _spawnDistance = _stationPoint[_stationCount];
+
+            if (_stationCount < _stationPoint.Length)
+            {
+                _stationCount++;
+                _spawnDistance = _stationPoint[_stationCount];
+            }
+            else
+            {
+                _isThrowAllStation = true;
+            }
+
         }
 
         if (!_spawnedStation) return;
 
         //”wŒi‚æ‚è‰w‚Ì‚Ù‚¤‚ª‹ß‚¢‚©‚çA”wŒi‚æ‚è‚à‘‚­ƒXƒNƒ[ƒ‹‚µ‚½‚Ù‚¤‚ª‚¢‚¢‚æ‚Ë
-        float moveSpeed = _trainManager._currentSpeed * Time.deltaTime * _speedCoe;
+        float moveSpeed = _trainManager._currentSpeed / 60 * Time.deltaTime * _speedCoe;
         _spawnedStation.transform.position += new Vector3(0, 0, -moveSpeed);
 
         if(_spawnedStation.transform.position.z < _destroyStationZ)

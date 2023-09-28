@@ -8,7 +8,7 @@ using UnityEngine;
 public class CalculationQuestionGenerator : MonoBehaviour
 {
     [SerializeField, Header("ìÔà’ìxí≤êÆ")] private LevelParameter[] _levelParameter = new LevelParameter[0];
-    private int _nowLevel = 0;
+    [SerializeField] private int _nowLevel = 0;
     private int _minValue = 0;
     private int _maxValue = 10;
     private bool _isAppearMultiplication = false;
@@ -39,6 +39,8 @@ public class CalculationQuestionGenerator : MonoBehaviour
 
     void Awake()
     {
+        LevelUp();
+
         //Ç†ÇÁÇ©Ç∂ÇﬂÇ¢Ç≠Ç¬Ç©ñ‚ëËÇçÏÇ¡ÇƒÇ®Ç≠
         for (int i = 0; i < _firstGenerateNumber; i++)
         {
@@ -46,7 +48,11 @@ public class CalculationQuestionGenerator : MonoBehaviour
         }
 
         _nowAnswer = _answers[0];
-        LevelUp();
+    }
+
+    private void Start()
+    {
+        //LevelUp();
     }
 
     /// <summary>
@@ -113,7 +119,7 @@ public class CalculationQuestionGenerator : MonoBehaviour
         QuestionGenerate();
         _nowAnswer = _answers[answerCount];
 
-        if(_nowLevel < _levelParameter.Length && answerCount >= _levelParameter[_nowLevel].NextBorder)
+        if(_nowLevel < _levelParameter.Length && answerCount == _levelParameter[_nowLevel].NextBorder)
         {
             LevelUp();
         }

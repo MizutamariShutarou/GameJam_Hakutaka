@@ -8,6 +8,9 @@ using UnityEngine.UI;
 /// </summary>
 public class PlayerTest : MonoBehaviour
 {
+    [SerializeField, Header("チートボタンを押すと自動的に正解になります")] private bool _isCheating = false;
+    [SerializeField] private GameObject _cheatButton = default;
+
     [SerializeField] private InputField _inputField = default;
     [SerializeField] private CalculationQuestionGenerator _questionGenerator = default;
     [SerializeField] private CalculationUI _calculationUI = default;
@@ -17,12 +20,13 @@ public class PlayerTest : MonoBehaviour
     private void Start()
     {
         _inputField.Select();
-    }
 
-    private void Update()
-    {
-        //if (_inputField.isFocused) return;
-        //_inputField.Select();
+        //チートモード
+        if(_isCheating)
+        {
+            _cheatButton.SetActive(true);
+        }
+
     }
 
     public async void OnEndEdit()
@@ -54,6 +58,15 @@ public class PlayerTest : MonoBehaviour
         _questionGenerator.Answer(_answerCount);
         _trainManager.ChangeSpeedRate(_answerCount);
         await _calculationUI.UpdateUI(_questionGenerator.CurrentNum - 1);
+    }
+
+    /// <summary>
+    /// 正解する
+    /// </summary>
+    public void Cheat()
+    {
+        _inputField.text = _questionGenerator.NowAnswer.ToString();
+        OnEndEdit();
     }
 
 }

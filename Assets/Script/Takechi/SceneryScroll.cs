@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SceneryScroll : MonoBehaviour
 {
+    [SerializeField, Header("スクロールスピードの係数")] private float _speedCoe = 10;
     [SerializeField] GameObject _scenery;
     Vector3 _frontAnchor, _backAnchor;
     float _distance;
@@ -22,7 +23,7 @@ public class SceneryScroll : MonoBehaviour
     }
     void Update()
     {
-        float movingDistance = _trainManager._currentSpeed * Time.deltaTime * 10;
+        float movingDistance = _trainManager._currentSpeed / 60 * Time.deltaTime * _speedCoe;
         _scrollObject1.transform.position += new Vector3(0, 0, -movingDistance);
         _scrollObject2.transform.position += new Vector3(0, 0, -movingDistance);
         if(_scrollObject1.transform.position.z < _backAnchor.z) 
