@@ -60,7 +60,7 @@ public class CalculationUI : MonoBehaviour
         _downImage.gameObject.SetActive(false);
         for (int i = 0; i < _generator.FirstGenerateNumber; i++)
         {
-            SettingUI(i);
+            SettingUI(i).Forget();
         }
     }
 
@@ -69,18 +69,18 @@ public class CalculationUI : MonoBehaviour
         SettingNextUI();
     }
 
-    private void SettingUI(int num)
+    private async UniTask SettingUI(int num)
     {
         var obj = GameObject.Instantiate(_operationObj, _canvas.transform);
         _operationObjList.Add(obj);
-        obj.Initialize(_generator, num); 
+        obj.Initialize(_generator, num);
+        await UniTask.CompletedTask;
     }
 
     public void SettingNextUI()
     {
         var firstObj = _operationObjList[0].gameObject;
         firstObj.transform.localScale = new Vector3(1, 1, 1);
-       
 
         var secondObj = _operationObjList[1].gameObject;
         secondObj.transform.localScale = new Vector3(_nextUISize, _nextUISize, _nextUISize);
@@ -114,7 +114,7 @@ public class CalculationUI : MonoBehaviour
 
     public async UniTask UpdateUI(int currentNum)
     {
-        SettingUI(currentNum);
+        await SettingUI(currentNum);
 
         await UIAnimation(_operationObjList);
     }
