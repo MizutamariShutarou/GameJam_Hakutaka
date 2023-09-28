@@ -32,7 +32,7 @@ public class PlayerTest : MonoBehaviour
     public async void OnEndEdit()
     {
         //‰½‚à“ü—Í‚³‚ê‚Ä‚È‚©‚Á‚½‚ç‰½‚à‚µ‚È‚¢
-        if (_inputField.text == "") return;
+        if (_inputField.text == "" || _inputField.text == "-") return;
 
         _answerCount++;
         int playerAnswer = int.Parse(_inputField.text);
