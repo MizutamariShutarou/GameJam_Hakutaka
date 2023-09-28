@@ -19,6 +19,8 @@ public class Gimmick : MonoBehaviour
     [Header("‚È‚É‚©‚ª’Ê‚è‚©‚©‚éƒMƒ~ƒbƒNŠÖŒW")]
     [SerializeField, Header("’Ê‚è‚©‚©‚é‚È‚É‚©")] private GameObject _throughGameObject = default;
     [SerializeField] private float _moveSecond = 5;
+    [SerializeField] private Transform _rightUp = default;
+    [SerializeField] private Transform _leftDown = default;
 
     //--ˆÃ‚­‚È‚éƒMƒ~ƒbƒNŠÖŒW--//
     [Header("ˆÃ‚­‚È‚éƒMƒ~ƒbƒNŠÖŒW")]
@@ -63,7 +65,7 @@ public class Gimmick : MonoBehaviour
         _cameras[_currentCamera].Priority = _unSelectPriority;
         _currentCamera++;
 
-        if(_currentCamera >= _cameras.Length)
+        if (_currentCamera >= _cameras.Length)
         {
             _currentCamera = 0;
         }
@@ -78,8 +80,32 @@ public class Gimmick : MonoBehaviour
     public void PassThrough()
     {
         AudioManager.Instance.PlaySE(3);
-        var go = Instantiate(_throughGameObject, new Vector3(0, 30, -700), Quaternion.identity);
-        go.transform.DOMoveZ(700, _moveSecond).SetEase(Ease.Linear).OnComplete(() => Destroy(go)).SetAutoKill();
+
+        float startY = UnityEngine.Random.Range(_leftDown.position.y, _rightUp.position.y);
+        float startZ = 0;
+        float endY = UnityEngine.Random.Range(_leftDown.position.y, _rightUp.position.y);
+        float endZ = 0;
+
+        //0‚¾‚Á‚½‚ç‰E‚©‚çA1‚¾‚Á‚½‚ç¶‚©‚ç
+        switch (UnityEngine.Random.Range(0, 2))
+        {
+            case 0:
+                startZ = _rightUp.position.z;
+                endZ = _leftDown.position.z;
+                break;
+
+            case 1:
+                startZ = _leftDown.position.z;
+                endZ = _leftDown.position.z;
+                break;
+
+            default:
+                break;
+        }
+
+        var go = Instantiate(_throughGameObject, new Vector3(0, startY, startZ), Quaternion.identity);
+        go.transform.DOMoveY(endY, _moveSecond).SetEase(Ease.Linear).SetAutoKill();
+        go.transform.DOMoveZ(endZ, _moveSecond).SetEase(Ease.Linear).OnComplete(() => Destroy(go)).SetAutoKill();
     }
 
     /// <summary>

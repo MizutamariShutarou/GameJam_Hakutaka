@@ -10,7 +10,7 @@ public class CalculationQuestionGenerator : MonoBehaviour
     [SerializeField, Header("ìÔà’ìxí≤êÆ")] private LevelParameter[] _levelParameter = new LevelParameter[0];
     [SerializeField] private int _nowLevel = 0;
     private int _minValue = 0;
-    private int _maxValue = 10;
+    private int _maxValue = 4;
     private bool _isAppearMultiplication = false;
 
     [SerializeField, Header("ç≈èâÇ…ê∂ê¨Ç≥ÇÍÇÈñ‚ëËÇÃêî")] private int _firstGenerateNumber = 4;
@@ -48,11 +48,6 @@ public class CalculationQuestionGenerator : MonoBehaviour
         }
 
         _nowAnswer = _answers[0];
-    }
-
-    private void Start()
-    {
-        //LevelUp();
     }
 
     /// <summary>
