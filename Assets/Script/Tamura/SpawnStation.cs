@@ -32,10 +32,10 @@ public class SpawnStation : MonoBehaviour
         if(TrainManager._movingDistance > _spawnDistance)
         {
             _spawnedStation = Instantiate(_station, _spawnPoint);
+            _stationCount++;
 
             if (_stationCount < _stationPoint.Length)
             {
-                _stationCount++;
                 _spawnDistance = _stationPoint[_stationCount];
             }
             else
