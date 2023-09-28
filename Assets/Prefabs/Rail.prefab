@@ -33,7 +33,7 @@ Transform:
   - {fileID: 3341554692671158770}
   - {fileID: 5287637186664283309}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &576120106126564905
 PrefabInstance:
@@ -181,6 +181,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: kouka
       objectReference: {fileID: 0}
+    - target: {fileID: 4278200481962586376, guid: 558d58e7161229a44a3ae55660891aca, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8111e94cfd6b71e48b25020ffed2722a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -337,6 +341,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: kouka (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4278200481962586376, guid: 558d58e7161229a44a3ae55660891aca, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8111e94cfd6b71e48b25020ffed2722a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
